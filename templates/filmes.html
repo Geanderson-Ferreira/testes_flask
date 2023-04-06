@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+
+<div class="container">
+
+    <h2>Lista de Filmes</h2>
+    <hr>
+
+    <div class="row">
+    
+        {% for filme in filmes["results"] %}
+
+            <div class="col-sm-4">
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="http://image.tmdb.org/t/p/w500{{filme['backdrop_path']}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{filme["title"]}}</h5>
+                    <p class="card-text">{{filme["overview"]}}</p>
+                    <a href="#" class="btn btn-primary">{{filme["vote_average"]}}</a>
+                </div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+{% endblock conteudo %}

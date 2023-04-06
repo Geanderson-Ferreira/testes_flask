@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<div class="container">
+
+    <h2>Diário de um Professor</h2>
+    <hr>
+    {% for aluno, nota in notas.items() %}
+
+        <!-- <details>
+            <summary>{{aluno}}</summary>
+            <p>{{nota}}</p>
+        </details> -->
+        <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample{{aluno}}" role="button" aria-expanded="false" aria-controls="collapseExample{{aluno}}">
+              {{aluno}}
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample{{aluno}}">
+            <div class="card card-body">
+                {{nota}}
+            </div>
+          </div>
+
+    {% endfor %}
+    <form action="{{url_for('sobre')}}" method="POST">
+        <div class="form-group">
+
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" name="nome" placeholder="Digite o nome" required>
+
+            <label for="nota">Nota:</label>
+            <input type="text" name="nota" class="form-control" placeholder="Digite a nota" required>
+        
+        </div>
+        
+        <input type="submit" value="Inserir" class="btn btn-success">
+    </form>
+
+
+</div>
+{% endblock conteudo %}
